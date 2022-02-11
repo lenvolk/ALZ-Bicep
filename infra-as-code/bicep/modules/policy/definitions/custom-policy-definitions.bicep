@@ -7,8 +7,8 @@ VERSION: 1.0.0
 
 targetScope = 'managementGroup'
 
-@description('The management group scope to which the policy definitions are to be created at. DEFAULT VALUE = "alz"')
-param parTargetManagementGroupID string = 'alz'
+@description('The management group scope to which the policy definitions are to be created at. DEFAULT VALUE = "Azure Landing Zones"')
+param parTargetManagementGroupID string = 'a659fe98-5688-4592-99cd-0be85cd550bc'
 
 @description('Set Parameter to true to Opt-out of deployment telemetry')
 param parTelemetryOptOut bool = false

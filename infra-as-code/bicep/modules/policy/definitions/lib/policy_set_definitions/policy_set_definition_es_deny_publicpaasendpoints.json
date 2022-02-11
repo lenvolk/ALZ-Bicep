@@ -20,7 +20,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "KeyVaultPublicIpDenyEffect": {
         "type": "String",
@@ -33,7 +33,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "SqlServerPublicIpDenyEffect": {
         "type": "String",
@@ -46,7 +46,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "StoragePublicIpDenyEffect": {
         "type": "String",
@@ -59,7 +59,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "AKSPublicIpDenyEffect": {
         "type": "String",
@@ -72,7 +72,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "ACRPublicIpDenyEffect": {
         "type": "String",
@@ -85,7 +85,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "AFSPublicIpDenyEffect": {
         "type": "String",
@@ -98,7 +98,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "PostgreSQLFlexPublicIpDenyEffect": {
         "type": "String",
@@ -111,7 +111,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "MySQLFlexPublicIpDenyEffect": {
         "type": "String",
@@ -124,7 +124,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "BatchPublicIpDenyEffect": {
         "type": "String",
@@ -137,7 +137,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       }
     },
     "policyDefinitions": [

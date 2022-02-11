@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "parTargetManagementGroupID": {
-            "value": "alz"
+            "value": "a659fe98-5688-4592-99cd-0be85cd550bc"
         },
         "parTelemetryOptOut": {
             "value": false

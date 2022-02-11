@@ -24,7 +24,7 @@
           "Deny",
           "Disabled"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "excludedSubnets": {
         "type": "Array",

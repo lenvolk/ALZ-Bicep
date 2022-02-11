@@ -24,7 +24,7 @@
           "Disabled",
           "Deny"
         ],
-        "defaultValue": "Deny"
+        "defaultValue": "Audit"
       },
       "maxNodeCount": {
         "type": "Integer",
