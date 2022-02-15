@@ -10,27 +10,27 @@ $ManagementGrpName = 'volk'
 #     [Parameter(Mandatory = $true)][string]$ManagementGrpName
 # )
  
-foreach ($InitiativeNames in $InitiativeName) {
+foreach ($InitiativeName in $InitiativeNames) {
 
-$initiative = Get-AzPolicySetDefinition -Name $InitiativeNames -ManagementGroupName $ManagementGrpName -ErrorAction Ignore #-Custom
+$initiative = Get-AzPolicySetDefinition -Name $InitiativeName -ManagementGroupName $ManagementGrpName -ErrorAction Ignore #-Custom
 if ($null -ne $initiative) {
 
-            Write-Output "Assignment for initiative $InitiativeNames will be removed as RemoveAssignment parameter was set to true."
+            Write-Output "Assignment for initiative $InitiativeName will be removed as RemoveAssignment parameter was set to true."
             Remove-AzPolicyAssignment -Id $assignment.PolicyAssignmentId | Out-Null
             Write-Output "Assignment $($assignment.Name) has been removed."           
  
-            $Policies = (Get-AzPolicySetDefinition -Name $InitiativeNames -ManagementGroupName $ManagementGrpName).Properties.policyDefinitions.policyDefinitionId
-            Remove-AzPolicySetDefinition -Name $InitiativeNames -ManagementGroupName $ManagementGrpName -Force | Out-Null
-            Write-Output "Initiative $InitiativeNames has been removed."
+            $Policies = (Get-AzPolicySetDefinition -Name $InitiativeName -ManagementGroupName $ManagementGrpName).Properties.policyDefinitions.policyDefinitionId
+            Remove-AzPolicySetDefinition -Name $InitiativeName -ManagementGroupName $ManagementGrpName -Force | Out-Null
+            Write-Output "Initiative $InitiativeName has been removed."
  
             foreach ($policy in $Policies) {
-                Write-Output "Removing policy $policy assgined to $InitiativeNames"
+                Write-Output "Removing policy $policy assgined to $InitiativeName"
                 Remove-AzPolicyDefinition -Id $policy -Force -ErrorAction Ignore #| Out-Null
                 Write-Output "Policy $policy has been removed."
             }  
         }
 else {
-    Write-Output "Initiative $InitiativeNames not found."
+    Write-Output "Initiative $InitiativeName not found."
 }
 
 }
