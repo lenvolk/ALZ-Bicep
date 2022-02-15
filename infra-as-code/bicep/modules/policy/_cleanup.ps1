@@ -16,7 +16,6 @@ $initiative = Get-AzPolicySetDefinition -Name $InitiativeName -ManagementGroupNa
 if ($null -ne $initiative) {
 
             Write-Output "Assignment for initiative $InitiativeName will be removed as RemoveAssignment parameter was set to true."
-            Remove-AzPolicyAssignment -Id $assignment.PolicyAssignmentId | Out-Null
             Write-Output "Assignment $($assignment.Name) has been removed."           
  
             $Policies = (Get-AzPolicySetDefinition -Name $InitiativeName -ManagementGroupName $ManagementGrpName).Properties.policyDefinitions.policyDefinitionId
