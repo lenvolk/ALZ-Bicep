@@ -1,18 +1,12 @@
 
-# 
 # list all definitions by MgGrp ==> Get-AzPolicySetDefinition -ManagementGroupName $ManagementGrpName
 
 $InitiativeNames = 'Deploy-Diagnostics-LogAnalytics','Deploy-ASCDF-Config','Deny-PublicPaaSEndpoints','Deploy-Private-DNS-Zones','Deploy-Sql-Security','Enforce-Encryption-CMK','Enforce-EncryptTransit'
 $ManagementGrpName = 'volk'
 
-# param(
-#     [Parameter(Mandatory = $true)][string]$InitiativeNames,
-#     [Parameter(Mandatory = $true)][string]$ManagementGrpName
-# )
- 
 foreach ($InitiativeName in $InitiativeNames) {
 
-$initiative = Get-AzPolicySetDefinition -Name $InitiativeName -ManagementGroupName $ManagementGrpName -ErrorAction Ignore #-Custom
+$initiative = Get-AzPolicySetDefinition -Name $InitiativeName -ManagementGroupName $ManagementGrpName -ErrorAction Ignore
 if ($null -ne $initiative) {
 
             Write-Output "Assignment for initiative $InitiativeName will be removed as RemoveAssignment parameter was set to true."
