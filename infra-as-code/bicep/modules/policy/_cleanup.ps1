@@ -1,10 +1,9 @@
 
 # REF: https://www.powershellbros.com/remove-azure-initiative-with-related-policies/
-
+# list all definitions by MgGrp ==> Get-AzPolicySetDefinition -ManagementGroupName $ManagementGrpName
 
 $InitiativeName = 'Enforce-Encryption-CMK' #'Configure Azure PaaS services to use private DNS zones'
 $ManagementGrpName = 'volk'
-#$RemoveAssignment = 'false'
 
 param(
     [Parameter(Mandatory = $true)][string]$InitiativeName,
@@ -27,7 +26,7 @@ if ($null -ne $initiative) {
                 Remove-AzPolicyDefinition -Id $policy -Force | Out-Null
                 Write-Output "Policy $policy has been removed."
             }  
-}
+        }
 else {
     Write-Output "Initiative $InitiativeName not found."
 }
