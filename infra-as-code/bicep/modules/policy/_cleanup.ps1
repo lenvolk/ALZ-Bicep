@@ -1,5 +1,5 @@
 
-# REF: https://www.powershellbros.com/remove-azure-initiative-with-related-policies/
+# 
 # list all definitions by MgGrp ==> Get-AzPolicySetDefinition -ManagementGroupName $ManagementGrpName
 
 $InitiativeName = 'Enforce-Encryption-CMK' #'Configure Azure PaaS services to use private DNS zones'
