@@ -17,7 +17,7 @@ VERSION: 1.0.0
 targetScope = 'managementGroup'
 
 @description('The management group scope to which the role can be assigned.  This management group ID will be used for the assignableScopes property in the role definition.')
-param parAssignableScopeManagementGroupId string = 'alz'
+param parAssignableScopeManagementGroupId string = 'volk'
 
 @description('Set Parameter to true to Opt-out of deployment telemetry')
 param parTelemetryOptOut bool = false
