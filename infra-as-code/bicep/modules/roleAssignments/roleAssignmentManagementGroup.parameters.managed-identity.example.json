@@ -2,17 +2,17 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "parRoleAssignmentNameGuid": {
-      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    },
+    // "parRoleAssignmentNameGuid": {
+    //   "value": ""  This value defaults to guid(subscription().subscriptionId, parRoleDefinitionId, parAssigneeObjectId)
+    // },
     "parRoleDefinitionId": {
-      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      "value": "4308c4e6-07d5-534f-9e18-32769872a3f4"
     },
     "parAssigneePrincipalType": {
       "value": "ServicePrincipal"
     },
     "parAssigneeObjectId": {
-      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      "value": "14bf742e-9d05-4821-9b3c-9df4d0c5ed9f"
     },
     "parTelemetryOptOut": {
       "value": false

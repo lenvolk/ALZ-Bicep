@@ -6,7 +6,7 @@ Get-AzSubscription -SubscriptionName "AzIntConsumption" | Select-AzSubscription
 
 # For Azure global regions
 New-AzManagementGroupDeployment `
-  -TemplateFile .\definitions\custom-policy-definitions.bicep `
-  -TemplateParameterFile .\definitions\custom-policy-definitions.parameters.example.json `
+  -TemplateFile .\customRoleDefinitions.bicep `
+  -TemplateParameterFile .\customRoleDefinitions.parameters.example.json `
   -Location eastus2 `
-  -ManagementGroupId 'alz'
+  -ManagementGroupId alz

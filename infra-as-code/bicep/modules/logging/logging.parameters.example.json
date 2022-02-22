@@ -6,7 +6,7 @@
       "value": "alz-log-analytics"
     },
     "parLogAnalyticsWorkspaceRegion": {
-      "value": "eastus"
+      "value": "eastus2"
     },
     "parLogAnalyticsWorkspaceLogRetentionInDays": {
       "value": 365
