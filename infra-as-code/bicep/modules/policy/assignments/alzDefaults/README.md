@@ -8,16 +8,16 @@ This module deploys the default Azure Landing Zone Azure Policy Assignments to t
 
 The module requires the following inputs:
 
- | Parameter                                            | Description                                                                        | Requirement | Example                                                                                                                                               | Default Value                     |
- | ---------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
- | parTopLevelManagementGroupPrefix                     | Prefix for the management group hierarchy.                                         | Yes         | `alz`                                                                                                                                                 | `alz`                             |
- | parLogAnalyticsWorkSpaceAndAutomationAccountLocation | The region where the Log Analytics Workspace & Automation Account are deployed.    | Yes         | `eastus`                                                                                                                                              | `eastus`                          |
- | parLogAnalyticsWorkspaceResourceID                   | Log Analytics Workspace Resource ID                                                | Yes         | `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/alz-logging/providers/Microsoft.OperationalInsights/workspaces/alz-log-analytics` | None                              |
- | parLogAnalyticsWorkspaceLogRetentionInDays           | Number of days of log retention for Log Analytics Workspace                        | Yes         | `365`                                                                                                                                                 | `365`                             |
- | parAutomationAccountName                             | Automation Account name                                                            | Yes         | `alz-automation-account`                                                                                                                              | `alz-automation-account`          |
- | parMSDFCEmailSecurityContact                         | An e-mail address that you want Microsoft Defender for Cloud alerts to be sent to. | Yes         | `security_contact@replace_me.com`                                                                                                                     | `security_contact@replace_me.com` |
- | parDdosProtectionPlanId                              | ID of the DDoS Protection Plan which will be applied to the Virtual Networks       | Yes         | `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/Hub_Networking_POC/providers/Microsoft.Network/ddosProtectionPlans/alz-Ddos-Plan` | (empty string)                    |
- | parTelemetryOptOut                                   | Set Parameter to true to Opt-out of deployment telemetry                           | Yes         | `false`                                                                                                                                               | `false`                           |
+| Parameter                                            | Description                                                                        | Requirement | Example                                                                                                                                                   | Default Value                     |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| parTopLevelManagementGroupPrefix                     | Prefix for the management group hierarchy.                                         | Yes         | `alz`                                                                                                                                                     | `alz`                             |
+| parLogAnalyticsWorkSpaceAndAutomationAccountLocation | The region where the Log Analytics Workspace & Automation Account are deployed.    | Yes         | `eastus`                                                                                                                                                  | `eastus`                          |
+| parLogAnalyticsWorkspaceResourceID                   | Log Analytics Workspace Resource ID                                                | Yes         | `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/alz-logging/providers/Microsoft.OperationalInsights/workspaces/alz-log-analytics`     | None                              |
+| parLogAnalyticsWorkspaceLogRetentionInDays           | Number of days of log retention for Log Analytics Workspace                        | Yes         | `365`                                                                                                                                                     | `365`                             |
+| parAutomationAccountName                             | Automation Account name                                                            | Yes         | `alz-automation-account`                                                                                                                                  | `alz-automation-account`          |
+| parMSDFCEmailSecurityContact                         | An e-mail address that you want Microsoft Defender for Cloud alerts to be sent to. | Yes         | `security_contact@replace_me.com`                                                                                                                         | `security_contact@replace_me.com` |
+| parDdosProtectionPlanId                              | ID of the DDoS Protection Plan which will be applied to the Virtual Networks       | Yes         | `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ALZ-Hub_Networking_POC/providers/Microsoft.Network/ddosProtectionPlans/alz-Ddos-Plan` | (empty string)                    |
+| parTelemetryOptOut                                   | Set Parameter to true to Opt-out of deployment telemetry                           | Yes         | `false`                                                                                                                                                   | `false`                           |
 
 ## Outputs
 
@@ -28,6 +28,7 @@ The module does not generate any outputs.
 > For the examples below we assume you have downloaded or cloned the Git repo as-is and are in the root of the repository as your selected directory in your terminal of choice.
 
 ### Azure CLI
+
 ```bash
 # For Azure global regions
 az deployment mg create \
@@ -36,7 +37,9 @@ az deployment mg create \
   --location eastus \
   --management-group-id alz
 ```
+
 OR
+
 ```bash
 # For Azure China regions
 az deployment mg create \
@@ -56,7 +59,9 @@ New-AzManagementGroupDeployment `
   -Location eastus `
   -ManagementGroupId alz
 ```
+
 OR
+
 ```powershell
 # For Azure China regions
 New-AzManagementGroupDeployment `

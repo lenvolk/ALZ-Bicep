@@ -12,17 +12,17 @@ Module deploys the following resources:
 
 The module requires the following inputs:
 
- | Parameter                    | Type   | Default            | Description                                                         | Requirement | Example                                                                                                                                               |
- | ---------------------------- | ------ | ------------------ | ------------------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
- | parBGPRoutePropagation       | bool   | false              | Switch to enable BGP Route Propagation on VNet Route Table          | None        | false                                                                                                                                                 |
- | parTags                      | object | Empty object `{}`  | Array of Tags to be applied to all resources in the Spoke Network   | None        | `{"key": "value"}`                                                                                                                                    |
- | parDdosProtectionPlanId      | string | Empty string `''`  | Existing DDoS Protection plan to utilize                            | None        | `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/Hub_Networking_POC/providers/Microsoft.Network/ddosProtectionPlans/alz-Ddos-Plan` |
- | parSpokeNetworkAddressPrefix | string | '10.11.0.0/16'     | CIDR for Spoke Network                                              | None        | '10.11.0.0/16'                                                                                                                                        |
- | parSpokeNetworkName          | string | 'vnet-spoke'       | The Name of the Spoke Virtual Network.                              | None        | 'vnet-spoke'                                                                                                                                          |
- | parDNSServerIPArray          | array  | Empty array `[]`   | Array IP DNS Servers to use for VNet DNS Resolution                 | None        | `['10.10.1.4', '10.20.1.5']`                                                                                                                          |
- | parNextHopIPAddress          | string | Empty string `''`  | IP Address where network traffic should route to leverage DNS Proxy | None        | '192.168.50.4'                                                                                                                                        |
- | parSpokeToHubRouteTableName  | string | 'rtb-spoke-to-hub' | Name of Route table to create for the default route of Hub.         | None        | 'rtb-spoke-to-hub '                                                                                                                                   |
- | parTelemetryOptOut           | bool   | false              | Set Parameter to true to Opt-out of deployment telemetry            | None        | false                                                                                                                                                 |
+| Parameter                    | Type   | Default            | Description                                                         | Requirement | Example                                                                                                                                                   |
+| ---------------------------- | ------ | ------------------ | ------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| parBGPRoutePropagation       | bool   | false              | Switch to enable BGP Route Propagation on VNet Route Table          | None        | false                                                                                                                                                     |
+| parTags                      | object | Empty object `{}`  | Array of Tags to be applied to all resources in the Spoke Network   | None        | `{"key": "value"}`                                                                                                                                        |
+| parDdosProtectionPlanId      | string | Empty string `''`  | Existing DDoS Protection plan to utilize                            | None        | `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ALZ-Hub_Networking_POC/providers/Microsoft.Network/ddosProtectionPlans/alz-Ddos-Plan` |
+| parSpokeNetworkAddressPrefix | string | '10.11.0.0/16'     | CIDR for Spoke Network                                              | None        | '10.11.0.0/16'                                                                                                                                            |
+| parSpokeNetworkName          | string | 'vnet-spoke'       | The Name of the Spoke Virtual Network.                              | None        | 'vnet-spoke'                                                                                                                                              |
+| parDNSServerIPArray          | array  | Empty array `[]`   | Array IP DNS Servers to use for VNet DNS Resolution                 | None        | `['10.10.1.4', '10.20.1.5']`                                                                                                                              |
+| parNextHopIPAddress          | string | Empty string `''`  | IP Address where network traffic should route to leverage DNS Proxy | None        | '192.168.50.4'                                                                                                                                            |
+| parSpokeToHubRouteTableName  | string | 'rtb-spoke-to-hub' | Name of Route table to create for the default route of Hub.         | None        | 'rtb-spoke-to-hub '                                                                                                                                       |
+| parTelemetryOptOut           | bool   | false              | Set Parameter to true to Opt-out of deployment telemetry            | None        | false                                                                                                                                                     |
 
 ## Outputs
 
@@ -42,9 +42,10 @@ In this example, the spoke resources will be deployed to the resource group spec
 > For the examples below we assume you have downloaded or cloned the Git repo as-is and are in the root of the repository as your selected directory in your terminal of choice.
 
 ### Azure CLI
+
 ```bash
 # For Azure global regions
-# Set Azure Landing zone subscription ID as the the current subscription 
+# Set Azure Landing zone subscription ID as the the current subscription
 LandingZoneSubscriptionId="[your landing zone subscription ID]"
 az account set --subscription $LandingZoneSubscriptionId
 
@@ -56,10 +57,12 @@ az deployment group create \
    --template-file infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.bicep \
    --parameters @infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.parameters.example.json
 ```
+
 OR
+
 ```bash
 # For Azure China regions
-# Set Platform connectivity subscription ID as the the current subscription 
+# Set Platform connectivity subscription ID as the the current subscription
 LandingZoneSubscriptionId="[your landing zone subscription ID]"
 az account set --subscription $LandingZoneSubscriptionId
 
@@ -76,46 +79,42 @@ az deployment group create \
 
 ```powershell
 # For Azure global regions
-# Set Platform connectivity subscription ID as the the current subscription 
+# Set Platform connectivity subscription ID as the the current subscription
 $LandingZoneSubscriptionId = "[your landing zone subscription ID]"
 
 Select-AzSubscription -SubscriptionId $LandingZoneSubscriptionId
 
 New-AzResourceGroup -Name 'Spoke_Networking_POC' `
   -Location 'EastUs2'
-  
+
 New-AzResourceGroupDeployment `
   -TemplateFile infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.bicep `
   -TemplateParameterFile infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.parameters.example.json `
   -ResourceGroupName 'Spoke_Networking_POC'
 ```
+
 OR
+
 ```powershell
 # For Azure China regions
-# Set Platform connectivity subscription ID as the the current subscription 
+# Set Platform connectivity subscription ID as the the current subscription
 $LandingZoneSubscriptionId = "[your landing zone subscription ID]"
 
 Select-AzSubscription -SubscriptionId $LandingZoneSubscriptionId
 
 New-AzResourceGroup -Name 'Spoke_Networking_POC' `
   -Location 'chinaeast2'
-  
+
 New-AzResourceGroupDeployment `
   -TemplateFile infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.bicep `
   -TemplateParameterFile infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.parameters.example.json
   -ResourceGroupName 'Spoke_Networking_POC'
 ```
+
 ## Example Output in Azure global regions
 
 ![Example Deployment Output](media/spokeNetworkExampleDeploymentOutput.png "Example Deployment Output in Azure global regions")
 
-
 ## Bicep Visualizer
 
 ![Bicep Visualizer](media/bicepVisualizer.png "Bicep Visualizer")
-
-
-
-
-
-

@@ -9,7 +9,7 @@
       "value": "eastus2"
     },
     "parLogAnalyticsWorkspaceLogRetentionInDays": {
-      "value": 365
+      "value": 30
     },
     "parLogAnalyticsWorkspaceSolutions": {
       "value": [

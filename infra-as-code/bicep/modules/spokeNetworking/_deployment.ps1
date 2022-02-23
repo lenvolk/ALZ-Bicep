@@ -1,4 +1,4 @@
-Get-AzSubscription -SubscriptionName "AzIntConsumption" | Select-AzSubscription
+Get-AzSubscription -SubscriptionName "MSDN-SUB" | Select-AzSubscription
 
 New-AzResourceGroup -Name 'Spoke_Networking_POC' `
   -Location 'EastUs'
